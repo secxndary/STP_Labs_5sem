@@ -2,18 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
-  <title>Delete Person</title>
+  <title>Delete album</title>
   <link rel="stylesheet" type="text/css" th:href="@{/css/style3.css}"/>
 </head>
 <body>
 <div class="container">
-  <h1>Delete book:</h1>
-  <form th:action="@{/deletebook}"
-        th:object="${bookform}" method="POST">
+  <h1>Delete album:</h1>
+  <form th:action="@{/deletealbum}"
+        th:object="${albumform}" method="POST">
     <p>Title:
       <input type="text" th:field="*{title}" />
     </p>
-    <p> Author:
+    <p>Author:
       <input type="text" th:field="*{author}" />
     </p>
     <input class ="button-main-page" type="submit" value="Delete" />
