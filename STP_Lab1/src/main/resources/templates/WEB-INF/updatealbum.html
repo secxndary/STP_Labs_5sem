@@ -8,15 +8,15 @@
 <body>
 <div class="container">
 
-    <h1>Update book:</h1>
+    <h1>Update album:</h1>
     <form th:action="@{/updatealbum}"
           th:object="${albumform}" method="POST">
 
-        <h2>Enter album title and author to update:</h2>
+        <h2>Enter album title and artist to update:</h2>
         <p>Title:
             <input type="text" th:field="*{oldTitle}" />
         </p>
-        <p> Author:
+        <p>Artist:
             <input type="text" th:field="*{oldAuthor}" />
         </p>
 
@@ -24,7 +24,7 @@
         <p>Title:
             <input type="text" th:field="*{title}" />
         </p>
-        <p> Author:
+        <p>Artist:
             <input type="text" th:field="*{author}" />
         </p>
         <input class ="button-main-page" type="submit" value="Update" />
