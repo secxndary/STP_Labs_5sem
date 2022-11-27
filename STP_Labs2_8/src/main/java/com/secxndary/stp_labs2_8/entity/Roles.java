@@ -1,8 +1,8 @@
 package com.secxndary.stp_labs2_8.entity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Roles")
@@ -18,6 +18,6 @@ public class Roles {
     @Column(name = "name_role")
     private String name;
 
-    // TODO: many-to-many fetch
-
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    private List<Users> users;
 }
