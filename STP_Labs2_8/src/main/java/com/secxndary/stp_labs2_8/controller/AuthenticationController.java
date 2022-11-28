@@ -1,12 +1,13 @@
 package com.secxndary.stp_labs2_8.controller;
+import com.secxndary.stp_labs2_8.dto.UserDto;
 import com.secxndary.stp_labs2_8.entity.User;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -15,6 +16,8 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@RequiredArgsConstructor
+@RequestMapping(value = "api/auth")
 public class AuthenticationController {
     private static List<User> usersList = new ArrayList<User>();
 
@@ -30,18 +33,26 @@ public class AuthenticationController {
     {
         ModelAndView modelAndView = new ModelAndView("register");
         var user = new User();
-        modelAndView.setViewName("register");      // файл
+//        modelAndView.setViewName("register");      // файл
         model.addAttribute("user", user);
         log.info("/register was called GET");
         return modelAndView;
     }
 
 
+    @PostMapping
+    @ResponseStatus(value = HttpStatus.OK)
+    public void register(@Valid @RequestBody UserDto user) {
+        
+    }
+
+
+
     @PostMapping(value = {"/register"})
     public ModelAndView saveAlbum(Model model, @ModelAttribute("user") User user)
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("register");
+//        modelAndView.setViewName("register");
         String username = user.getUsername();
         String email = user.getEmail();
         if (username != null && username.length() > 0 && email != null && email.length() > 0)
@@ -53,4 +64,7 @@ public class AuthenticationController {
         log.info("/addalbum was called POST");
         return modelAndView;
     }
+
+
+
 }
