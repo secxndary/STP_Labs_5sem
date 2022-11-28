@@ -5,16 +5,19 @@
     <title>Добро пожаловать!</title>
 </head>
 <body>
+
+<div class="container">
     <h1>Зарегистрируйтесь</h1>
-    <form th:action="@{/registerUser}"
+    <form th:action="@{/register}"
           th:object="${user}"
           method="POST">
 
-        <input type="text" placeholder="Enter username" th:field="*{username}"/>
-        <input type="email" placeholder="Enter email" th:field="*{email}"/>
-        <input type="password" placeholder="Enter password" th:field="*{password}"/>
+        <input type="text" placeholder="Enter username" th:field="*{username}" />
+        <input type="email" placeholder="Enter email" th:field="*{email}" />
+        <input type="password" placeholder="Enter password" th:field="*{password}" />
 
         <input type="submit" value="Зарегистрироваться"></input>
     </form>
+</div>
 </body>
 </html>

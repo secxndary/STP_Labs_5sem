@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "Concerts")
 @Data
@@ -24,6 +26,9 @@ public class Concert {
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "date")
+    private LocalDate date;
 
     @Column(name = "capacity")
     private int capacity;

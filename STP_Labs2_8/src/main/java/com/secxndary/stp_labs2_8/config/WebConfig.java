@@ -10,7 +10,6 @@ import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 @Configuration
-
 public class WebConfig implements WebMvcConfigurer {
 
     @Bean
