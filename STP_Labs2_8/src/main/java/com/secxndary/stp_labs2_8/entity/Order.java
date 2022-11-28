@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Ticket {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "ticket_name")
-    private String name;
+    @Column(name = "active_ticket")
+    private Boolean is_active;
 
     @ManyToOne
     @JoinColumn(name = "concert_id", nullable = false)
