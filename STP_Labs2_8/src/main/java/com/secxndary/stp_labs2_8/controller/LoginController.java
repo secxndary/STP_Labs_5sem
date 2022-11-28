@@ -1,5 +1,5 @@
 package com.secxndary.stp_labs2_8.controller;
-import com.secxndary.stp_labs2_8.entity.Users;
+import com.secxndary.stp_labs2_8.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import java.util.List;
 @Slf4j
 @Controller
 public class LoginController {
-    private static List<Users> usersList = new ArrayList<Users>();
+    private static List<User> usersList = new ArrayList<User>();
 
     @Value("${user.login}")
     private String login;
@@ -28,7 +28,7 @@ public class LoginController {
     public ModelAndView registerUser(Model model)
     {
         ModelAndView modelAndView = new ModelAndView("register");
-        var user = new Users();
+        var user = new User();
         modelAndView.setViewName("register");      // файл
         model.addAttribute("user", user);
         log.info("/register was called GET");
