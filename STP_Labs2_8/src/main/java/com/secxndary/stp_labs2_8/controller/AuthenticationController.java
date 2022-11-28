@@ -13,11 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// TODO: request mapping, rest documentation
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "api/auth")
+//@RequestMapping(value = "api/auth/")
 public class AuthenticationController {
     private static List<User> usersList = new ArrayList<User>();
 
@@ -33,18 +33,18 @@ public class AuthenticationController {
     {
         ModelAndView modelAndView = new ModelAndView("register");
         var user = new User();
-//        modelAndView.setViewName("register");      // файл
+        modelAndView.setViewName("register");      // файл
         model.addAttribute("user", user);
         log.info("/register was called GET");
         return modelAndView;
     }
 
 
-    @PostMapping
-    @ResponseStatus(value = HttpStatus.OK)
-    public void register(@Valid @RequestBody UserDto user) {
-        
-    }
+//    @PostMapping
+//    @ResponseStatus(value = HttpStatus.OK)
+//    public void register(@Valid @RequestBody UserDto user) {
+//
+//    }
 
 
 
@@ -52,7 +52,7 @@ public class AuthenticationController {
     public ModelAndView saveAlbum(Model model, @ModelAttribute("user") User user)
     {
         ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("register");
+        modelAndView.setViewName("register");
         String username = user.getUsername();
         String email = user.getEmail();
         if (username != null && username.length() > 0 && email != null && email.length() > 0)
@@ -61,7 +61,7 @@ public class AuthenticationController {
             usersList.add(userToRegister);
             System.out.println(userToRegister.getUsername());
         }
-        log.info("/addalbum was called POST");
+        log.info("/register was called POST");
         return modelAndView;
     }
 
