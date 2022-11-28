@@ -9,9 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
+import java.util.*;
 
 @Service
 @Slf4j
@@ -19,23 +18,30 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    // TODO: passwordEncoder
+//    private final PasswordEncoder passwordEncoder;
 
 
     public User register(UserDto userDto) {
-        User user = UserMapper.INSTANCE.fromDTO(userDto);
+        // UserMapper.INSTANCE.fromDTO(userDto);
+        List<Role> qwe = new ArrayList<Role>();
+
+
+        User user = new User((long)1, "qwe", "zxc", "mail", qwe);
         User existUser = userRepository.findByUsername(user.getUsername());
         if (existUser == user) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT, "User is exist");
         }
 
+        // TODO: Add roles enum and List<roles> to user
+
 //        Role roleUser = roleRepository.findByName(ROLE_USER);
 //        List<Role> userRoles = new ArrayList<>();
 //        userRoles.add(roleUser);
 //        user.setRoles(userRoles);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        sendMessageRegistration(user);
         return userRepository.save(user);
     }
 }
