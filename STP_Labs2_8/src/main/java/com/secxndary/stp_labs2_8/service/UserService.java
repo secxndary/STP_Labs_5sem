@@ -2,7 +2,7 @@ package com.secxndary.stp_labs2_8.service;
 import com.secxndary.stp_labs2_8.dto.UserDto;
 import com.secxndary.stp_labs2_8.entity.Role;
 import com.secxndary.stp_labs2_8.entity.User;
-import com.secxndary.stp_labs2_8.mapper.UserMapper;
+//import com.secxndary.stp_labs2_8.mapper.UserMapper;
 import com.secxndary.stp_labs2_8.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,11 +23,11 @@ public class UserService {
 
 
     public User register(UserDto userDto) {
-        // UserMapper.INSTANCE.fromDTO(userDto);
+//        UserMapper.INSTANCE.fromDTO(userDto);
         List<Role> qwe = new ArrayList<Role>();
+        User user = new User((long)1, userDto.getUsername(), userDto.getPassword(), userDto.getEmail(), qwe);
 
 
-        User user = new User((long)1, "qwe", "zxc", "mail", qwe);
         User existUser = userRepository.findByUsername(user.getUsername());
         if (existUser == user) {
             throw new ResponseStatusException(
