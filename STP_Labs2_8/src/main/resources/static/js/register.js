@@ -3,6 +3,14 @@ async function Register() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
+
+    if (username === "" || email === "" || password === "") {
+        console.log('undef');
+        document.querySelector("#result").innerHTML = "Fill all inputs!";
+        $("#result").css("display", "block");
+        return;
+    }
+
     // TODO: error message styles
     let response = await fetch("/register",
         {
@@ -24,6 +32,7 @@ async function Register() {
     } else {
         let data = await response.json();
         document.querySelector("#result").innerHTML = "User already exists!";
+        $("#result").css("display", "block");
         ClearInput();
         console.log(data.error);
     }

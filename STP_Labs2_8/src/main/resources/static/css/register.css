@@ -2722,7 +2722,7 @@ textarea.form-control-lg {
     display: none;
     width: 100%;
     margin-top: 0.25rem;
-    font-size: 0.875em;
+    font-size: 1.1em;
     color: #fd7e14;
 }
 
@@ -11435,7 +11435,11 @@ h1 {
 }
 
 button {
-    margin-top: 5%;
+    margin-top: 2%;
     position: absolute;
     left: 45%;
+}
+
+input {
+    background-color: transparent;
 }

@@ -1,12 +1,11 @@
 package com.secxndary.stp_labs2_8.repository;
+import com.secxndary.stp_labs2_8.entity.Role;
 import com.secxndary.stp_labs2_8.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
 
-    User findByUserName(String username);
+    Role findByRoleName(String roleName);
 }

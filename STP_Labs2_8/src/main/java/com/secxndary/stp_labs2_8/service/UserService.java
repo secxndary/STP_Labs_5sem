@@ -3,6 +3,7 @@ import com.secxndary.stp_labs2_8.dto.UserDto;
 import com.secxndary.stp_labs2_8.entity.Role;
 import com.secxndary.stp_labs2_8.entity.User;
 //import com.secxndary.stp_labs2_8.mapper.UserMapper;
+import com.secxndary.stp_labs2_8.repository.RoleRepository;
 import com.secxndary.stp_labs2_8.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,8 @@ import java.util.*;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+
     // TODO: passwordEncoder
 //    private final PasswordEncoder passwordEncoder;
 
@@ -25,24 +28,28 @@ public class UserService {
     // TODO: interface + override
     public User findByUsername(String username) {
         log.info("UserService : findByUsername");
-        return userRepository.findByUsername(username);
+        return userRepository.findByUserName(username);
     }
 
 
-
+    // TODO: mapper
     public User register(UserDto userDto) {
 //        UserMapper.INSTANCE.fromDTO(userDto);
-        List<Role> qwe = new ArrayList<Role>();
+        Role roleUser = roleRepository.findByRoleName("USER");
+        System.out.println(roleUser.getRoleName());
+        List<Role> roleList = new ArrayList<Role>();
+        roleList.add(roleUser);
+
         User user = new User();
         user.setPassword(userDto.getPassword());
-        user.setUsername(userDto.getUsername());
+        user.setUserName(userDto.getUsername());
         user.setEmail(userDto.getEmail());
-
+        user.setRoles(roleList);
 
         User existUser = findByUsername(userDto.getUsername());
 //        System.out.println(existUser.getUsername());
 //        System.out.println(user.getUsername());
-        if (existUser != null && Objects.equals(existUser.getUsername(), user.getUsername())) {
+        if (existUser != null && Objects.equals(existUser.getUserName(), user.getUserName())) {
             System.out.println("yra");
             throw new ResponseStatusException(HttpStatus.CONFLICT, "User already exists");
         }
