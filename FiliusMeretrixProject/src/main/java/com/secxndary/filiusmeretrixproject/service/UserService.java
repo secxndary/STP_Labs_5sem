@@ -1,16 +1,18 @@
-package com.secxndary.stp_labs2_8.service;
-import com.secxndary.stp_labs2_8.dto.UserDto;
-import com.secxndary.stp_labs2_8.entity.Role;
-import com.secxndary.stp_labs2_8.entity.User;
-//import com.secxndary.stp_labs2_8.mapper.UserMapper;
-import com.secxndary.stp_labs2_8.repository.RoleRepository;
-import com.secxndary.stp_labs2_8.repository.UserRepository;
+package com.secxndary.filiusmeretrixproject.service;
+import com.secxndary.filiusmeretrixproject.dto.UserDto;
+import com.secxndary.filiusmeretrixproject.entity.Role;
+import com.secxndary.filiusmeretrixproject.entity.User;
+import com.secxndary.filiusmeretrixproject.repository.RoleRepository;
+import com.secxndary.filiusmeretrixproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 
 @Service
 @Slf4j

@@ -1,19 +1,19 @@
-package com.secxndary.stp_labs2_8.controller;
-import com.secxndary.stp_labs2_8.dto.UserDto;
-import com.secxndary.stp_labs2_8.entity.User;
-//import com.secxndary.stp_labs2_8.mapper.UserMapper;
-import com.secxndary.stp_labs2_8.service.UserService;
+package com.secxndary.filiusmeretrixproject.controller;
+import com.secxndary.filiusmeretrixproject.dto.UserDto;
+import com.secxndary.filiusmeretrixproject.entity.User;
+import com.secxndary.filiusmeretrixproject.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import io.swagger.v3.oas.annotations.*;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 // TODO: request mapping, rest documentation
 @Slf4j
@@ -21,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(value = "/register")
 public class AuthenticationController {
+
     private static List<User> usersList = new ArrayList<User>();
     private final UserService userService;
 
@@ -38,8 +39,8 @@ public class AuthenticationController {
     // TODO: add responseEntity
 //    @ResponseBody
     @Operation(
-        summary = "User's registration",
-        description = "Allows you to register a user" )
+            summary = "User's registration",
+            description = "Allows you to register a user" )
     @PostMapping
     @ResponseStatus(value = HttpStatus.OK)
     public void register(@Valid @RequestBody UserDto user) {

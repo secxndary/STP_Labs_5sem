@@ -11,7 +11,7 @@ async function Register() {
         return;
     }
 
-
+    // TODO: error message styles
     let response = await fetch("/register",
         {
             method: 'POST',

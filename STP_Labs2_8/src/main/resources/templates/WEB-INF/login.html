@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
-    <title>Welcome!</title>
+    <title>Welcome! Sign in.</title>
+    <script th:src="@{/js/login.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <div th:utext="${login}"/>
-    <div th:utext="${password}"/>
+    <div class="container" id="login-container">
+        <h1>Sign in</h1>
+
+        <div class="form-group">
+            <label for="username" class="form-label mt-4">Username</label>
+            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username"
+                   pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$">
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-label mt-4">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password"
+                   pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+        </div>
+
+        <div id="result" class="invalid-feedback">Error has occurred. Try again later</div>
+        <button type="submit" content="Register" onclick="Login()" class="btn btn-primary">Sign in</button>
+    </div>
+
 </body>
 </html>
