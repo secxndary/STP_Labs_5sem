@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.*;
 
 @Service
@@ -22,16 +21,30 @@ public class UserService {
 //    private final PasswordEncoder passwordEncoder;
 
 
+
+    // TODO: interface + override
+    public User findByUsername(String username) {
+        log.info("UserService : findByUsername");
+        return userRepository.findByUsername(username);
+    }
+
+
+
     public User register(UserDto userDto) {
 //        UserMapper.INSTANCE.fromDTO(userDto);
         List<Role> qwe = new ArrayList<Role>();
-        User user = new User((long)1, userDto.getUsername(), userDto.getPassword(), userDto.getEmail(), qwe);
+        User user = new User();
+        user.setPassword(userDto.getPassword());
+        user.setUsername(userDto.getUsername());
+        user.setEmail(userDto.getEmail());
 
 
-        User existUser = userRepository.findByUsername(user.getUsername());
-        if (existUser == user) {
-            throw new ResponseStatusException(
-                    HttpStatus.CONFLICT, "User is exist");
+        User existUser = findByUsername(userDto.getUsername());
+//        System.out.println(existUser.getUsername());
+//        System.out.println(user.getUsername());
+        if (existUser != null && Objects.equals(existUser.getUsername(), user.getUsername())) {
+            System.out.println("yra");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "User already exists");
         }
 
         // TODO: Add roles enum and List<roles> to user

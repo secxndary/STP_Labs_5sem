@@ -12,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import io.swagger.v3.oas.annotations.*;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,15 +36,13 @@ public class AuthenticationController {
     public ModelAndView showRegisterPage(Model model)
     {
         ModelAndView modelAndView = new ModelAndView("register");
-//        var user = new User();
-//        modelAndView.setViewName("register");      // файл
-//        model.addAttribute("user", user);
         log.info("/register was called GET");
         return modelAndView;
     }
 
 
 
+    // TODO: add responseEntity
 //    @ResponseBody
     @Operation(
         summary = "User's registration",

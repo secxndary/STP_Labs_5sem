@@ -18,13 +18,15 @@
 <!--          method="POST">-->
 
         <input id="username" type="text" placeholder="Enter username"
-               pattern="^[a-zA-Z0-9]+$"/>
+               pattern="^[a-zA-Z0-9]+$"/> <br/>
+
+        <div id="result" style="color: red"></div>
 
         <input id="email" type="email" placeholder="Enter email"
-               pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"/>
+               pattern="^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$"/> <br/>
 
         <input id="password" type="password" placeholder="Enter password"
-               pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" />
+               pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" /> <br/>
 
         <button type="submit" onclick="Register()" content="Register">Зарегистрироваться</button>
 <!--    </form>-->

@@ -3,6 +3,7 @@ async function Register() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
+    // TODO: error message styles
     let response = await fetch("/register",
         {
             method: 'POST',
@@ -17,14 +18,15 @@ async function Register() {
             })
         });
 
-    // if (response.status === 200) {
-    //     window.location.replace("http://localhost:8080/login");
-    // } else {
+    if (response.status === 200) {
+        // window.location.replace("http://localhost:8080/login");
+        console.log("ok");
+    } else {
         let data = await response.json();
-        // document.querySelector("#result").innerHTML = "please input valid data!";
+        document.querySelector("#result").innerHTML = "User already exists!";
         ClearInput();
         console.log(data.error);
-    // }
+    }
 }
 
 function ClearInput() {
