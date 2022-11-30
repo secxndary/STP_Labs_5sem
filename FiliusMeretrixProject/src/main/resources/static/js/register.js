@@ -11,7 +11,7 @@ async function Register() {
         return;
     }
 
-    // TODO: error message styles
+
     let response = await fetch("/register",
         {
             method: 'POST',
@@ -26,9 +26,11 @@ async function Register() {
             })
         });
 
+
     if (response.status === 200) {
-        // window.location.replace("http://localhost:8080/login");
+        window.location.replace("http://localhost:8080/login");
         console.log("ok");
+        $("#result").css("display", "none");
     } else {
         let data = await response.json();
         document.querySelector("#result").innerHTML = "User already exists!";
@@ -37,6 +39,7 @@ async function Register() {
         console.log(data.error);
     }
 }
+
 
 function ClearInput() {
     document.getElementById("username").value = "";

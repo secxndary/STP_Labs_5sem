@@ -44,6 +44,7 @@ public class AuthenticationController {
     @PostMapping
     @ResponseStatus(value = HttpStatus.OK)
     public void register(@Valid @RequestBody UserDto user) {
+        log.info("/register was called POST");
         userService.register(user);
     }
 

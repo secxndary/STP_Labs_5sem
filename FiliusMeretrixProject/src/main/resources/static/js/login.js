@@ -1,38 +1,42 @@
 async function Login() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
-
-    let response = await fetch("/login",
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password
-            })
-        });
+    console.log(username);
+    console.log(password);
 
 
-    let data = await response.json();
+    // let response = await fetch("/login",
+    //     {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Accept': 'application/json'
+    //         },
+    //         body: JSON.stringify({
+    //             username: username,
+    //             password: password
+    //         })
+    //     });
 
-    if (response.status === 200) {
-        localStorage.setItem("jwt", data.token);
+    // let data = await response.json();
+
+    // if (response.status === 200) {
+        // localStorage.setItem("jwt", data.token);
 
         if (username === "root") {
-            document.location.href = "/admin";
+            document.location.href = "/homeAdmin";
+            return;
         } else {
-            document.location.href = "/user";
+            document.location.href = "/homeUser";
+            return;
         }
-    } else {
-        let data = await response.json();
+    // } else {
+        // let data = await response.json();
         document.querySelector("#result").innerHTML = "Enter correct data!";
         $("#result").css("display", "block");
         ClearInput();
-        console.log(data.error);
-    }
+        // console.log(data.error);
+    // }
 }
 
 
