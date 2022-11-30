@@ -37,11 +37,13 @@
         <label for="password" class="form-label mt-4">Password</label>
         <input type="password" class="form-control" id="password" placeholder="Password"
                pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
-        <small id="passwordHelp" class="form-text text-muted">Must contain at least one digit, one special character and at least 6 characters.</small>
+        <small id="passwordHelp" class="form-text text-muted">Must contain at least one digit, one special symbol and 6 symbols.</small>
     </div>
 
     <div id="result" class="invalid-feedback">Error has occurred. Try again later</div>
-    <button type="submit" content="Register" onclick="Register()" class="btn btn-primary">Sign up</button>
+    <div id="btnSignUpCont">
+        <button type="submit" content="Register" onclick="Register()" class="btn btn-primary">Sign up</button>
+    </div>
 
 
 

@@ -5,6 +5,14 @@ async function Login() {
     console.log(password);
 
 
+    if (username === "" || password === "") {
+        console.log('undef');
+        document.querySelector("#result").innerHTML = "Fill all inputs!";
+        $("#result").css("display", "block");
+        return;
+    }
+
+
     // let response = await fetch("/login",
     //     {
     //         method: 'POST',
