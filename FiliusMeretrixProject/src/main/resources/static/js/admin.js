@@ -1,9 +1,12 @@
 let jsonArray;
 let templateObject;
 
-function getPlays() {
-    console.log('GET_PLAYS');
-    fetch(`/api/admin/plays`, {
+
+window.onload = getConcerts();
+
+function getConcerts() {
+    console.log('GET_CONCERTS');
+    fetch(`/api/admin/concerts`, {
         method: 'GET',
         headers:
             {
@@ -35,8 +38,8 @@ function getPlays() {
                     + `<input type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
             }
 
-            table_value += `<button class="films" onclick="deletePlay('${values[0]}')" style="width: 90px; margin-left: 190px; align-self: flex-end">Delete</button>`
-            table_value += `<button class="films" onclick="updatePlay('${values[0]}','${counter}')" style="width: 90px; margin-left: 60px; align-self: flex-end">Update</button>`
+            table_value += `<button class="films" onclick="deleteConcert('${values[0]}')" style="width: 90px; margin-left: 190px; align-self: flex-end">Delete</button>`
+            table_value += `<button class="films" onclick="updateConcert('${values[0]}','${counter}')" style="width: 90px; margin-left: 60px; align-self: flex-end">Update</button>`
             result.innerHTML += table_value + "<br/></div>";
             counter++;
         });
@@ -47,14 +50,14 @@ function getPlays() {
                 + keys[i] + ": "
                 + `<input type="text" id='${keys[i]}${counter}' style='width: 160px'/></div> `;
         }
-        table_value_second += `<button class="films" onclick="insertPlay('${counter}')" style="width: 90px;  margin: 5px; align-self: flex-end">Insert</button>`;
+        table_value_second += `<button class="films" onclick="insertConcert('${counter}')" style="width: 90px;  margin: 5px; align-self: flex-end">Insert</button>`;
         result.innerHTML += table_value_second + "<br/></div>";
         counter++;
     });
 }
 
 // TODO: error if inputs are empty
-function insertPlay(num) {
+function insertConcert(num) {
     console.log("INSERT");
 
     let insertObject = jsonArray[num - 1];
@@ -68,7 +71,7 @@ function insertPlay(num) {
     }
     console.log(insertObject);
 
-    fetch(`/api/admin/plays`,
+    fetch(`/api/admin/concerts`,
         {
             method: "POST",
             headers:
@@ -81,11 +84,11 @@ function insertPlay(num) {
         return res.json();
     }).then((data) => {
         console.log(data);
-        getPlays();
+        getConcerts();
     });
 }
 
-function updatePlay(id, num) {
+function updateConcert(id, num) {
     console.log("UPDATE");
 
     console.log(jsonArray[num]);
@@ -101,7 +104,7 @@ function updatePlay(id, num) {
     }
     console.log(updObject);
 
-    fetch(`/api/admin/plays/${id.toString()}`,
+    fetch(`/api/admin/concerts/${id.toString()}`,
         {
             method: "PUT",
             headers:
@@ -112,18 +115,18 @@ function updatePlay(id, num) {
                 }, body: JSON.stringify(updObject)
         }).then(res => {
         alert("Обновление прошло успешно");
-        getPlays();
+        getConcerts();
         return res.json();
     }).then((data) => {
         console.log(data);
     })
 }
 
-function deletePlay(id) {
+function deleteConcert(id) {
     alert(id);
     console.log("delete_element: " + " name: " + id);
 
-    fetch(`/api/admin/plays/${id.toString()}`, {
+    fetch(`/api/admin/concerts/${id.toString()}`, {
         method: "DELETE",
         headers: {
             "Content-Type": 'application/json; charset=utf-8',
@@ -132,7 +135,7 @@ function deletePlay(id) {
         }
 
     }).then(res => {
-        getPlays();
+        getConcerts();
         return res.json();
     }).then((data) => {
         console.log(data);
@@ -146,8 +149,8 @@ function logout() {
 
 function search() {
     let name = document.getElementById('search').value;
-    console.log('SEARCH_PLAYS');
-    fetch(`/api/admin/plays/${name}`, {
+    console.log('SEARCH_CONCERTS');
+    fetch(`/api/admin/concerts/${name}`, {
         method: 'GET',
         headers:
             {
@@ -180,17 +183,17 @@ function search() {
                     + `<input type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
             }
 
-            table_value += `<button class="plays" onclick="deletePlay('${values[0]}')" style="width: 90px; margin: 5px; align-self: flex-end">Delete</button>`
-            table_value += `<button class="plays" onclick="updatePlay('${values[0]}','${counter}')" style="width: 90px; margin: 5px; align-self: flex-end">Update</button>`
+            table_value += `<button class="concerts" onclick="deleteConcert('${values[0]}')" style="width: 90px; margin: 5px; align-self: flex-end">Delete</button>`
+            table_value += `<button class="concerts" onclick="updateConcert('${values[0]}','${counter}')" style="width: 90px; margin: 5px; align-self: flex-end">Update</button>`
             result.innerHTML += table_value + "<br/></div>";
             counter++;
         });
     });
 }
 
-function filter() {
-    console.log('FILTER_PLAYS');
-    fetch(`/api/admin/filterPlays`, {
+function filter(By) {
+    console.log('FILTER_CONCERTS');
+    fetch(`/api/admin/filter${By}`, {
         method: 'GET',
         headers:
             {
@@ -222,8 +225,8 @@ function filter() {
                     + `<input type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
             }
 
-            table_value += `<button class="plays" onclick="deletePlay('${values[0]}')" style="width: 90px; margin: 5px; align-self: flex-end">Delete</button>`
-            table_value += `<button class="plays" onclick="updatePlay('${values[0]}','${counter}')" style="width: 90px; margin: 5px; align-self: flex-end">Update</button>`
+            table_value += `<button class="concerts" onclick="deleteConcert('${values[0]}')" style="width: 90px; margin: 5px; align-self: flex-end">Delete</button>`
+            table_value += `<button class="concerts" onclick="updateConcert('${values[0]}','${counter}')" style="width: 90px; margin: 5px; align-self: flex-end">Update</button>`
             result.innerHTML += table_value + "<br/></div>";
             counter++;
         });

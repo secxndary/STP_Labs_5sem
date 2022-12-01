@@ -14,10 +14,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Concert {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    private Long id;
 
+    @Id
     @Column(name = "title")
     private String title;
 

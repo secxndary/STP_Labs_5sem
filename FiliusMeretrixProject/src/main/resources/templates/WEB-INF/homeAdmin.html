@@ -26,37 +26,55 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Waiting list</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="#">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="#">Feedbacks</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
+                    <li>
+                        <div class="d-flex">
+                            <input class="form-control me-sm-2" type="text" placeholder="Search" id="search">
+                            <button class="btn btn-secondary my-2 my-sm-0" onclick="search()">Search</button>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="logout" onclick="logout()">Logout</a>
+                    </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
+
             </div>
         </div>
     </nav>
-    <button class="plays" onclick="getPlays()" style="margin-left: 140px; width: 150px">show all plays</button>
-    <button class="filter" onclick="filter()" style="margin-left: 20px; width: 110px">filter plays</button>
-<!--    <input type="text" style='margin-left: 20px; width: 350px' id="search"/>-->
-<!--    <button class="search" onclick="search()" style="margin-left: 20px; width: 110px">search plays</button>-->
-    <button class="logout" onclick="logout()" style="margin-left: 420px; width: 110px">logout</button>
+
+
+    <button class="concerts" onclick="getConcerts()" style="margin-left: 140px; width: 150px">Show all concerts</button>
+    <select onchange="filter(this.value)">
+        <option value="ByTitle">Filter by title</option>
+        <option value="ByArtist">Filter by artist</option>
+        <option value="ByAddress">Filter by address</option>
+        <option value="ByDate">Filter by date</option>
+        <option value="ByCapacity">Filter by capacity</option>
+    </select>
+
+
+
+
+    <div class="form-group" id="selectFilter">
+<!--        <label for="exampleSelect1" class="form-label mt-4" id="labelFilter">Filter by</label>-->
+        <select class="form-select" id="exampleSelect1" onchange="filter(this.value)">
+            <option value="ByTitle">Filter by title</option>
+            <option value="ByArtist">Filter by artist</option>
+            <option value="ByAddress">Filter by address</option>
+            <option value="ByDate">Filter by date</option>
+            <option value="ByCapacity">Filter by capacity</option>
+        </select>
+    </div>
+
+
+
     <div class="form">
         <div id="result" style="display: flex; flex-direction: column"></div>
     </div>

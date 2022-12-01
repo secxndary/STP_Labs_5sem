@@ -2,20 +2,21 @@ package com.secxndary.filiusmeretrixproject.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDate;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlayDto {
+public class ConcertDto {
 
-    private String name;
+    private String title;
 
-    private String description;
-
-    private Float price;
+    private String artist;
 
     private String address;
 
-    private String date;
+    private LocalDate date;
+
+    private int capacity;
 }
