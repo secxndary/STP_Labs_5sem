@@ -27,34 +27,55 @@ function getConcerts() {
         let keys;
         let values;
 
-        data.forEach(element => {
-            keys = Object.keys(element);
-            values = Object.values(element);
-            let table_value = "<div style='display: flex'>";
 
-            for (let i = 0; i < keys.length; i++) {
-                table_value += "<div style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px'>"
-                    + keys[i] + ": "
-                    + `<input type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
+        for (let j = 0; j < data.length; j++) {
+            if (j === 0) {
+                keys = Object.keys(data[j]);
+                values = Object.values(data[j]);
+                let table_value = "<div style='display: flex'>";
+
+                for (let i = 0; i < keys.length; i++) {
+                    table_value += "<div id='legend' style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px; text-align: center;'>"
+                        + capitalizeFirstLetter(keys[i])
+                        + `<input id='first-row' class="form-control" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
+                }
+
+                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
+                result.innerHTML += table_value + "<br/></div>";
+                counter++;
             }
+            else {
+                keys = Object.keys(data[j]);
+                values = Object.values(data[j]);
+                let table_value = "<div style='display: flex'>";
 
-            table_value += `<button class="films" onclick="deleteConcert('${values[0]}')" style="width: 90px; margin-left: 190px; align-self: flex-end">Delete</button>`
-            table_value += `<button class="films" onclick="updateConcert('${values[0]}','${counter}')" style="width: 90px; margin-left: 60px; align-self: flex-end">Update</button>`
-            result.innerHTML += table_value + "<br/></div>";
-            counter++;
-        });
-        let table_value_second = "<div style='display: flex'>";
+                for (let i = 0; i < keys.length; i++) {
+                    table_value += "<div style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px'>"
+                        + `<input class="form-control row-insert" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
+                }
 
-        for (let i = 0; i < keys.length; i++) {
-            table_value_second += "<div style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px'>"
-                + keys[i] + ": "
-                + `<input type="text" id='${keys[i]}${counter}' style='width: 160px'/></div> `;
+                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
+                result.innerHTML += table_value + "<br/></div>";
+                counter++;
+            }
         }
-        table_value_second += `<button class="films" onclick="insertConcert('${counter}')" style="width: 90px;  margin: 5px; align-self: flex-end">Insert</button>`;
+
+
+
+        let table_value_second = "<div style='display: flex'>";
+        for (let i = 0; i < keys.length; i++) {
+            table_value_second += "<div id='insert-legend' style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px; text-align: center'>"
+                + capitalizeFirstLetter(keys[i])
+                + `<input class="form-control table-row" type="text" id='${keys[i]}${counter}' style='width: 160px'/></div> `;
+        }
+        table_value_second += `<button class="films btn btn-success" onclick="insertConcert('${counter}')" style="width: 100px; margin-left: 18px; align-self: flex-end">Insert</button>`;
         result.innerHTML += table_value_second + "<br/></div>";
         counter++;
     });
 }
+
 
 // TODO: error if inputs are empty
 function insertConcert(num) {
@@ -87,6 +108,8 @@ function insertConcert(num) {
         getConcerts();
     });
 }
+
+
 
 function updateConcert(id, num) {
     console.log("UPDATE");
@@ -122,6 +145,8 @@ function updateConcert(id, num) {
     })
 }
 
+
+
 function deleteConcert(id) {
     alert(id);
     console.log("delete_element: " + " name: " + id);
@@ -142,10 +167,12 @@ function deleteConcert(id) {
     })
 }
 
+
 function logout() {
     localStorage.clear();
     document.location.href = "/login";
 }
+
 
 function search() {
     let name = document.getElementById('search').value;
@@ -172,22 +199,41 @@ function search() {
         let keys;
         let values;
 
-        data.forEach(element => {
-            keys = Object.keys(element);
-            values = Object.values(element);
-            let table_value = "<div style='display: flex'>";
+        for (let j = 0; j < data.length; j++) {
+            if (j === 0) {
+                keys = Object.keys(data[j]);
+                values = Object.values(data[j]);
+                let table_value = "<div style='display: flex'>";
 
-            for (let i = 0; i < keys.length; i++) {
-                table_value += "<div style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px'>"
-                    + keys[i] + ": "
-                    + `<input type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
+                for (let i = 0; i < keys.length; i++) {
+                    table_value += "<div id='legend' style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px; text-align: center;'>"
+                        + capitalizeFirstLetter(keys[i])
+                        + `<input id='first-row' class="form-control" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
+                }
+
+                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
+                result.innerHTML += table_value + "<br/></div>";
+                counter++;
             }
+            else {
+                keys = Object.keys(data[j]);
+                values = Object.values(data[j]);
+                let table_value = "<div style='display: flex'>";
 
-            table_value += `<button class="concerts" onclick="deleteConcert('${values[0]}')" style="width: 90px; margin: 5px; align-self: flex-end">Delete</button>`
-            table_value += `<button class="concerts" onclick="updateConcert('${values[0]}','${counter}')" style="width: 90px; margin: 5px; align-self: flex-end">Update</button>`
-            result.innerHTML += table_value + "<br/></div>";
-            counter++;
-        });
+                for (let i = 0; i < keys.length; i++) {
+                    table_value += "<div style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px'>"
+                        + `<input class="form-control row-insert" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
+                }
+
+                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
+                result.innerHTML += table_value + "<br/></div>";
+                counter++;
+            }
+        }
+
+
     });
 }
 
@@ -214,21 +260,43 @@ function filter(By) {
         let keys;
         let values;
 
-        data.forEach(element => {
-            keys = Object.keys(element);
-            values = Object.values(element);
-            let table_value = "<div style='display: flex'>";
+        for (let j = 0; j < data.length; j++) {
+            if (j === 0) {
+                keys = Object.keys(data[j]);
+                values = Object.values(data[j]);
+                let table_value = "<div style='display: flex'>";
 
-            for (let i = 0; i < keys.length; i++) {
-                table_value += "<div style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px'>"
-                    + keys[i] + ": "
-                    + `<input type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
+                for (let i = 0; i < keys.length; i++) {
+                    table_value += "<div id='legend' style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px; text-align: center;'>"
+                        + capitalizeFirstLetter(keys[i])
+                        + `<input id='first-row' class="form-control" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
+                }
+
+                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
+                result.innerHTML += table_value + "<br/></div>";
+                counter++;
             }
+            else {
+                keys = Object.keys(data[j]);
+                values = Object.values(data[j]);
+                let table_value = "<div style='display: flex'>";
 
-            table_value += `<button class="concerts" onclick="deleteConcert('${values[0]}')" style="width: 90px; margin: 5px; align-self: flex-end">Delete</button>`
-            table_value += `<button class="concerts" onclick="updateConcert('${values[0]}','${counter}')" style="width: 90px; margin: 5px; align-self: flex-end">Update</button>`
-            result.innerHTML += table_value + "<br/></div>";
-            counter++;
-        });
+                for (let i = 0; i < keys.length; i++) {
+                    table_value += "<div style='display: flex; flex-direction: column; margin-right: 10px; margin-left: 10px'>"
+                        + `<input class="form-control row-insert" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
+                }
+
+                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
+                result.innerHTML += table_value + "<br/></div>";
+                counter++;
+            }
+        }
     });
+}
+
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
