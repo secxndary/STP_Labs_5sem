@@ -6,6 +6,8 @@ window.onload = getConcerts();
 
 function getConcerts() {
     console.log('GET_CONCERTS');
+    $("#adminPanelInteractionButtons").css({"display":"flex"});
+
     fetch(`/api/admin/concerts`, {
         method: 'GET',
         headers:

@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -13,10 +14,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Concert {
-
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long id;
 
     @Id
     @Column(name = "title")
@@ -33,4 +30,7 @@ public class Concert {
 
     @Column(name = "capacity")
     private int capacity;
+
+    @OneToMany(mappedBy = "concert")
+    private List<Order> tickets;
 }

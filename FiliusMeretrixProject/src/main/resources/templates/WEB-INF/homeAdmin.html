@@ -9,6 +9,7 @@
     <title>Admin panel</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <script th:src="@{/js/admin.js}"></script>
+    <script th:src="@{/js/adminTickets.js}"></script>
 </head>
 <body>
 <div>
@@ -21,15 +22,12 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home
+                        <a class="nav-link active" onclick="getConcerts()" href="#">Home
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Waiting list</a>
+                        <a class="nav-link" onclick="getTickets()" href="#">Tickets</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Feedbacks</a>
@@ -62,7 +60,7 @@
 
         <div class="d-flex" id="d-flex">
             <input class="form-control me-sm-2" type="text" placeholder="Enter title..." id="search">
-            <button class="btn btn-secondary my-2 my-sm-0" onclick="search()">Search</button>
+            <button class="btn btn-secondary my-2 my-sm-0" onclick="search()" id="searchButton">Search</button>
         </div>
     </div>
 
@@ -72,7 +70,6 @@
     <div class="form">
         <div id="result" style="display: flex; flex-direction: column"></div>
     </div>
-
 
 </div>
 </body>

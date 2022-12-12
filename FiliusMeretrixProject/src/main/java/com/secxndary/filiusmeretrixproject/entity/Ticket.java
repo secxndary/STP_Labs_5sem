@@ -7,23 +7,27 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "Orders")
-@Data
+@Table(name = "Tickets")
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Order {
+@RequiredArgsConstructor
+public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "is_active")
-    private Boolean is_active;
+    @Column(name = "row_place")
+    private Integer row;
+
+    @Column(name = "place")
+    private Integer place;
+
+    @Column(name = "availability_ticket")
+    private Boolean availability;
 
     @ManyToOne
-    @JoinColumn(name = "concert", nullable = false)
+    @JoinColumn(name = "concert_id", nullable = false)
     private Concert concert;
 
     @ManyToOne
