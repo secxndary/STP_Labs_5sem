@@ -137,7 +137,7 @@ function updateConcert(id, num) {
                     'Authorization': `Bearer ${localStorage.getItem('jwt')}`
                 }, body: JSON.stringify(updObject)
         }).then(res => {
-        alert("Обновление прошло успешно");
+        alert("Updated successfully.");
         getConcerts();
         return res.json();
     }).then((data) => {
@@ -148,7 +148,7 @@ function updateConcert(id, num) {
 
 
 function deleteConcert(id) {
-    alert(id);
+    alert(id + ' has been deleted.');
     console.log("delete_element: " + " name: " + id);
 
     fetch(`/api/admin/concerts/${id.toString()}`, {

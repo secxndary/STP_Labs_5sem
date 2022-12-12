@@ -16,11 +16,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "active_ticket")
+    @Column(name = "is_active")
     private Boolean is_active;
 
     @ManyToOne
-    @JoinColumn(name = "concert_id", nullable = false)
+    @JoinColumn(name = "concert", nullable = false)
     private Concert concert;
 
     @ManyToOne

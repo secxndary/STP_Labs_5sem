@@ -3,6 +3,7 @@ import com.secxndary.filiusmeretrixproject.dto.ConcertDto;
 import com.secxndary.filiusmeretrixproject.entity.Concert;
 import com.secxndary.filiusmeretrixproject.mapper.ConcertMapper;
 import com.secxndary.filiusmeretrixproject.repository.ConcertRepository;
+import com.secxndary.filiusmeretrixproject.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 public class ConcertService {
 
     private final ConcertRepository concertRepository;
+    private final OrderRepository orderRepository;
     private final ConcertMapper concertMapper;
 
 
@@ -111,6 +113,7 @@ public class ConcertService {
     @Transactional
     public void delete(String name) {
         Concert concert = concertRepository.findByTitle(name);
+        orderRepository.deleteByConcert(concert);
         concertRepository.deleteById(concert.getTitle());
         log.info("Delete completed {}", concert);
     }
