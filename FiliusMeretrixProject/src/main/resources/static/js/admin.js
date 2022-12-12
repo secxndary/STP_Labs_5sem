@@ -42,7 +42,7 @@ function getConcerts() {
                         + `<input id='first-row' class="form-control" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
                 }
 
-                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-primary" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
                 table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
                 result.innerHTML += table_value + "<br/></div>";
                 counter++;
@@ -57,7 +57,7 @@ function getConcerts() {
                         + `<input class="form-control row-insert" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
                 }
 
-                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-primary" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
                 table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
                 result.innerHTML += table_value + "<br/></div>";
                 counter++;
@@ -213,7 +213,7 @@ function search() {
                         + `<input id='first-row' class="form-control" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
                 }
 
-                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-primary" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
                 table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
                 result.innerHTML += table_value + "<br/></div>";
                 counter++;
@@ -228,7 +228,7 @@ function search() {
                         + `<input class="form-control row-insert" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
                 }
 
-                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-primary" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
                 table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
                 result.innerHTML += table_value + "<br/></div>";
                 counter++;
@@ -274,7 +274,7 @@ function filter(By) {
                         + `<input id='first-row' class="form-control" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
                 }
 
-                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-primary" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
                 table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
                 result.innerHTML += table_value + "<br/></div>";
                 counter++;
@@ -289,7 +289,7 @@ function filter(By) {
                         + `<input class="form-control row-insert" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 160px'/></div>`;
                 }
 
-                table_value += `<button class="films btn btn-danger" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-primary" onclick="deleteConcert('${values[0]}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
                 table_value += `<button class="films btn btn-info" onclick="updateConcert('${values[0]}','${counter}')" style="width: 100px; margin-left: 25px; align-self: flex-end">Update</button>`
                 result.innerHTML += table_value + "<br/></div>";
                 counter++;

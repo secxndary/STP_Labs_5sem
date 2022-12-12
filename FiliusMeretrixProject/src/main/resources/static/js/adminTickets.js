@@ -41,7 +41,7 @@ function getTickets() {
                         + `<input id="first-row" class="form-control" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 180px'/></div>`;
                 }
 
-                table_value += `<button class="films btn btn-danger" onclick="deleteTicket('${counter}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-primary" onclick="deleteTicket('${counter}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
                 result.innerHTML += table_value + "<br/></div>";
                 counter++;
             }
@@ -55,7 +55,7 @@ function getTickets() {
                         + `<input class="form-control row-insert" type="text" value='${values[i]}' id='${keys[i]}${counter}' style='width: 180px'/></div>`;
                 }
 
-                table_value += `<button class="films btn btn-danger" onclick="deleteTicket('${counter}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
+                table_value += `<button class="films btn btn-primary" onclick="deleteTicket('${counter}')" style="width: 100px; align-self: flex-end; margin-left: 18px">Delete</button>`
                 result.innerHTML += table_value + "<br/></div>";
                 counter++;
             }
