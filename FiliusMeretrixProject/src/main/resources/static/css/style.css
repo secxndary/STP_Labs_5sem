@@ -11462,7 +11462,7 @@ input {
 
 .logout {
     position: absolute;
-    right: -850px;
+    right: -1090px;
     cursor: pointer;
     text-decoration: none;
 }
@@ -11522,4 +11522,11 @@ input {
 #alertMessage {
     width: 20%;
     left: 80%;
+}
+
+#logoutUser {
+    position: absolute;
+    right: -1100px;
+    cursor: pointer;
+    text-decoration: none;
 }

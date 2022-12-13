@@ -234,10 +234,10 @@ function search() {
                 counter++;
             }
         }
-
-
     });
 }
+
+
 
 function filter(By) {
     console.log('FILTER_CONCERTS');

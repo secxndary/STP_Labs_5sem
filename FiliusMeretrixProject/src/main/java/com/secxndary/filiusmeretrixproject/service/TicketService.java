@@ -1,5 +1,6 @@
 package com.secxndary.filiusmeretrixproject.service;
 import com.secxndary.filiusmeretrixproject.dto.TicketDto;
+import com.secxndary.filiusmeretrixproject.dto.TicketOrderDto;
 import com.secxndary.filiusmeretrixproject.entity.Ticket;
 import com.secxndary.filiusmeretrixproject.mapper.PlayMapper;
 import com.secxndary.filiusmeretrixproject.mapper.TicketMapper;
@@ -68,13 +69,15 @@ public class TicketService {
         log.info("Delete completed {}", ticket);
     }
 
-//    public Ticket order(TicketOrderDto ticketOrderDto) {
-//        String username = ticketOrderDto.getUsername();
-//        User user = userService.findByUsername(username);
-//        Concert play = playRepository.findByName(ticketOrderDto.getPlayName());
-//        Ticket ticket = ticketRepository.findByPlaceAndRowAndAndPlay(ticketOrderDto.getPlace(), ticketOrderDto.getRow(), play);
-//        ticket.setUser(user);
-//        ticket.setAvailability(false);
-//        return ticketRepository.save(ticket);
-//    }
+    public Ticket order(TicketOrderDto ticketOrderDto) {
+        
+
+        String username = ticketOrderDto.getUserName();
+        User user = userService.findByUsername(username);
+        Concert play = playRepository.findByTitle(ticketOrderDto.getConcertTitle());
+        Ticket ticket = ticketRepository.findByPlaceAndRowAndAndConcert(ticketOrderDto.getPlace(), ticketOrderDto.getRow(), play);
+        ticket.setUser(user);
+        ticket.setAvailability(false);
+        return ticketRepository.save(ticket);
+    }
 }

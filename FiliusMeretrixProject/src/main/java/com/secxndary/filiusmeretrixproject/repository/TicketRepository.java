@@ -13,5 +13,5 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     @Query("SELECT t FROM Ticket t WHERE t.id = ?1")
     Optional<Ticket> findById(Long id);
 
-    Ticket findByPlaceAndRowAndAndConcert(Integer place, Integer row, Concert concert);
+    Ticket findByPlaceAndRowAndAndConcert(int place, int row, Concert concert);
 }

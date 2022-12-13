@@ -10,7 +10,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Comment {
+public class Feedback {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
